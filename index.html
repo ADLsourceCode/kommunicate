@@ -1,0 +1,47 @@
+<html>
+    <head></head>
+    <body>
+
+      <!-- <iframe
+      style="border: none;"
+      height="90%"
+      width="100%"
+      src="https://widget.kommunicate.io/chat?appId=YOUR_APP_ID"
+      allow="microphone; geolocation;"
+  >
+</iframe> -->
+
+        <script type="text/javascript">
+            (function(d, m){
+        
+            /*---------------- Kommunicate settings start ----------------*/
+        
+             var kommunicateSettings = {
+              "appId": "27831f13cc1ae9514ea3b1b73a6b64e41",  
+              "automaticChatOpenOnNavigation": true,
+              "popupWidget": false,
+              /*
+              "onInit": function (){
+                // paste your code here
+              }
+              */
+              };
+        
+            /*----------------- Kommunicate settings end ------------------*/
+        
+             var s = document.createElement("script");
+              s.type = "text/javascript";
+              s.async = true;
+              s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+              var h = document.getElementsByTagName("head")[0];
+              h.appendChild(s);
+              window.kommunicate = m;
+              m._globals = kommunicateSettings;
+            })(document, window.kommunicate || {});
+
+
+           
+            
+        </script>
+    </body>
+</html>
