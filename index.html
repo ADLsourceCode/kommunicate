@@ -1,5 +1,36 @@
 <html>
-    <head></head>
+    <head>
+
+      <style>
+        .loader {
+          border: 8px solid #f3f3f3;
+          border-radius: 50%;
+          border-top: 8px solid #f3c600;
+          width: 50px;
+          height: 50px;
+          -webkit-animation: spin 2s linear infinite; /* Safari */
+          animation: spin 2s linear infinite;
+        }
+        
+        /* Safari */
+        @-webkit-keyframes spin {
+          0% { -webkit-transform: rotate(0deg); }
+          100% { -webkit-transform: rotate(360deg); }
+        }
+        
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        .container{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height:100vh;
+        }
+        </style>
+    </head>
     <body>
 
       <!-- <iframe
@@ -12,20 +43,132 @@
 </iframe> -->
 
         <script type="text/javascript">
+          
+          var userId = getParameterByName('userId');
+          console.log('userId: ' + userId);
+ 
             (function(d, m){
         
             /*---------------- Kommunicate settings start ----------------*/
         
-             var kommunicateSettings = {
-              "appId": "27831f13cc1ae9514ea3b1b73a6b64e41",  
-              "automaticChatOpenOnNavigation": true,
-              "popupWidget": false,
-              /*
-              "onInit": function (){
-                // paste your code here
-              }
-              */
-              };
+            //  var kommunicateSettings = {
+            //   "appId": "27831f13cc1ae9514ea3b1b73a6b64e41",  
+            //   "automaticChatOpenOnNavigation": true,
+            //   "popupWidget": false,
+            //   /*
+            //   "onInit": function (){
+            //     // paste your code here
+            //   }
+            //   */
+            //   };
+
+            if(userId!=""){
+              var kommunicateSettings = {
+
+          "appId": "27831f13cc1ae9514ea3b1b73a6b64e41",
+          "popupWidget": true,
+          "automaticChatOpenOnNavigation": true,
+  
+          "onInit": function() {
+              Kommunicate.startConversation(); //starts a new conversation every time
+ 
+                var iframeStyle = document.createElement('style');
+                var classSettings = ".change-kommunicate-iframe-height{height:100%!important;width:100%!important;right:0!important;bottom:0!important;max-height: 100%!important;}";
+                iframeStyle.type = 'text/css';
+                iframeStyle.innerHTML = classSettings;
+                document.getElementsByTagName('head')[0].appendChild(iframeStyle);
+                var launcherIconStyle = "@media(min-width: 510px){.mck-sidebox.fade.in,.mck-box .mck-box-sm{width:100%; height:100%;max-height:100%!important;border-radius:0px!important;}.mck-sidebox{right:0!important;bottom:0!important;}}";
+                Kommunicate.customizeWidgetCss(launcherIconStyle);
+                var iframe = window.top.document.getElementsByTagName("iframe")[0];
+                //var addClassToIframe = iframe.contentDocument.getElementById("kommunicate-widget-iframe");
+                iframe.classList.add("change-kommunicate-iframe-height");  
+                KommunicateGlobal.document.getElementById('km-chat-widget-close-button').addEventListener('click',function(){
+                    var closeButtonClick = parent.document.getElementById("kommunicate-widget-iframe");
+                    closeButtonClick.classList.add("change-kommunicate-iframe-height");
+                });
+
+                var css = "#km-chat-widget-close-button{display:none !important;.mck-sidebox-launcher {display:none !important;} .km-chat-icon-sidebox  {display:none !important; }"             
+              Kommunicate.customizeWidgetCss(css);
+              Kommunicate.launchConversation();
+
+              
+               
+            }
+
+        
+}
+
+            }
+            else{
+
+              var kommunicateSettings = {
+
+"appId": "27831f13cc1ae9514ea3b1b73a6b64e41",
+"popupWidget": true,
+"automaticChatOpenOnNavigation": true,
+"preLeadCollection" : [
+            {
+                "field": "Name", // Name of the field you want to add
+                "required": true, // Set 'true' to make it a mandatory field
+                "placeholder": "Enter your name" // add whatever text you want to show in the placeholder
+            },
+            {
+                "field": "Email",
+                "type": "email",
+                "required": true,
+                "placeholder": "Enter your email"
+            },
+            {
+                "field": "Phone",
+                "type": "number",
+                "required": true,
+                "element": "input", // Optional field (Possible values: textarea or input)
+                "placeholder": "Enter your phone number"
+            },
+        ],
+"onInit": function() {
+    Kommunicate.startConversation(); //starts a new conversation every time
+
+      var iframeStyle = document.createElement('style');
+      var classSettings = ".change-kommunicate-iframe-height{height:100%!important;width:100%!important;right:0!important;bottom:0!important;max-height: 100%!important;}";
+      iframeStyle.type = 'text/css';
+      iframeStyle.innerHTML = classSettings;
+      document.getElementsByTagName('head')[0].appendChild(iframeStyle);
+      var launcherIconStyle = "@media(min-width: 510px){.mck-sidebox.fade.in,.mck-box .mck-box-sm{width:100%; height:100%;max-height:100%!important;border-radius:0px!important;}.mck-sidebox{right:0!important;bottom:0!important;}}";
+      Kommunicate.customizeWidgetCss(launcherIconStyle);
+      var iframe = window.top.document.getElementsByTagName("iframe")[0];
+      //var addClassToIframe = iframe.contentDocument.getElementById("kommunicate-widget-iframe");
+      iframe.classList.add("change-kommunicate-iframe-height");  
+      KommunicateGlobal.document.getElementById('km-chat-widget-close-button').addEventListener('click',function(){
+          var closeButtonClick = parent.document.getElementById("kommunicate-widget-iframe");
+          closeButtonClick.classList.add("change-kommunicate-iframe-height");
+      });
+
+      var css = "#km-chat-widget-close-button{display:none !important;.mck-sidebox-launcher {display:none !important;} .km-chat-icon-sidebox  {display:none !important; }"             
+    Kommunicate.customizeWidgetCss(css);
+    Kommunicate.launchConversation();
+
+    
+     
+  }
+
+
+}
+             
+            }
+// if(userId!=""){
+// }
+// else{
+       
+//           }
+
+
+
+// kommunicateSettings.onInit = function () {           
+            
+// }
+
+
         
             /*----------------- Kommunicate settings end ------------------*/
         
@@ -40,8 +183,21 @@
             })(document, window.kommunicate || {});
 
 
+
+            function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
            
             
         </script>
+<div class="container">
+  <div class="loader"></div> 
+</div>
+
     </body>
 </html>
