@@ -1,205 +1,155 @@
 <html>
-    <head>
 
-      <style>
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
         .loader {
-          border: 8px solid #f3f3f3;
-          border-radius: 50%;
-          border-top: 8px solid #f3c600;
-          width: 50px;
-          height: 50px;
-          -webkit-animation: spin 2s linear infinite; /* Safari */
-          animation: spin 2s linear infinite;
+            border: 8px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 8px solid #f3c600;
+            width: 50px;
+            height: 50px;
+            -webkit-animation: spin 2s linear infinite;
+            /* Safari */
+            animation: spin 2s linear infinite;
         }
-        
+
         /* Safari */
         @-webkit-keyframes spin {
-          0% { -webkit-transform: rotate(0deg); }
-          100% { -webkit-transform: rotate(360deg); }
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
         }
-        
+
         @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
-        .container{
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          height:100vh;
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
-        </style>
-    </head>
-    <body>
 
-      <!-- <iframe
-      style="border: none;"
-      height="90%"
-      width="100%"
-      src="https://widget.kommunicate.io/chat?appId=YOUR_APP_ID"
-      allow="microphone; geolocation;"
-  >
-</iframe> -->
+    </style>
+</head>
 
-        <script type="text/javascript">
-          
-          var userId = getParameterByName('userId');
-          console.log('userId: ' + userId);
- 
-            (function(d, m){
-        
-            /*---------------- Kommunicate settings start ----------------*/
-        
-            //  var kommunicateSettings = {
-            //   "appId": "27831f13cc1ae9514ea3b1b73a6b64e41",  
-            //   "automaticChatOpenOnNavigation": true,
-            //   "popupWidget": false,
-            //   /*
-            //   "onInit": function (){
-            //     // paste your code here
-            //   }
-            //   */
-            //   };
+<body>
+    <script type="text/javascript">
 
-            if(userId!=""){
-              var kommunicateSettings = {
+        var userId = getParameterByName('userId');
+        console.log('userId: ' + userId);
 
-          "appId": "27831f13cc1ae9514ea3b1b73a6b64e41",
-          "popupWidget": true,
-          "automaticChatOpenOnNavigation": true,
-  
-          "onInit": function() {
-              Kommunicate.startConversation(); //starts a new conversation every time
- 
-                var iframeStyle = document.createElement('style');
-                var classSettings = ".change-kommunicate-iframe-height{height:100%!important;width:100%!important;right:0!important;bottom:0!important;max-height: 100%!important;}";
-                iframeStyle.type = 'text/css';
-                iframeStyle.innerHTML = classSettings;
-                document.getElementsByTagName('head')[0].appendChild(iframeStyle);
-                var launcherIconStyle = "@media(min-width: 510px){.mck-sidebox.fade.in,.mck-box .mck-box-sm{width:100%; height:100%;max-height:100%!important;border-radius:0px!important;}.mck-sidebox{right:0!important;bottom:0!important;}}";
-                Kommunicate.customizeWidgetCss(launcherIconStyle);
-                var iframe = window.top.document.getElementsByTagName("iframe")[0];
-                //var addClassToIframe = iframe.contentDocument.getElementById("kommunicate-widget-iframe");
-                iframe.classList.add("change-kommunicate-iframe-height");  
-                KommunicateGlobal.document.getElementById('km-chat-widget-close-button').addEventListener('click',function(){
-                    var closeButtonClick = parent.document.getElementById("kommunicate-widget-iframe");
-                    closeButtonClick.classList.add("change-kommunicate-iframe-height");
-                });
+        /*---------------- Kommunicate settings start ----------------*/
+        (function (d, m) {
+            var kommunicateSettings = {
+                "appId": "27831f13cc1ae9514ea3b1b73a6b64e41",
+                "popupWidget": true,
+                "automaticChatOpenOnNavigation": true,
+                "onInit": function () {
+                    // Kommunicate.startConversation(); //starts a new conversation every time
 
-                var css = "#km-chat-widget-close-button{display:none !important;.mck-sidebox-launcher {display:none !important;} .km-chat-icon-sidebox  {display:none !important; }"             
-              Kommunicate.customizeWidgetCss(css);
-              Kommunicate.launchConversation();
+                    var iframeStyle = document.createElement('style');
+                    var classSettings = ".change-kommunicate-iframe-height{height:100%!important;width:100%!important;right:0!important;bottom:0!important;max-height: 100%!important;}";
+                    iframeStyle.type = 'text/css';
+                    iframeStyle.innerHTML = classSettings;
+                    document.getElementsByTagName('head')[0].appendChild(iframeStyle);
+                    var launcherIconStyle = "@media(min-width: 510px){.mck-sidebox.fade.in,.mck-box .mck-box-sm{width:100%; height:100%;max-height:100%!important;border-radius:0px!important;}.mck-sidebox{right:0!important;bottom:0!important;}}";
+                    Kommunicate.customizeWidgetCss(launcherIconStyle);
+                    var iframe = window.top.document.getElementsByTagName("iframe")[0];
+                    //var addClassToIframe = iframe.contentDocument.getElementById("kommunicate-widget-iframe");
+                    iframe.classList.add("change-kommunicate-iframe-height");
+                    KommunicateGlobal.document.getElementById('km-chat-widget-close-button').addEventListener('click', function () {
+                        var closeButtonClick = parent.document.getElementById("kommunicate-widget-iframe");
+                        closeButtonClick.classList.add("change-kommunicate-iframe-height");
+                    });
 
-              
-               
+                    var css = "#km-chat-widget-close-button{display:none !important;.mck-sidebox-launcher {display:none !important;} .km-chat-icon-sidebox  {display:none !important; }"
+                    Kommunicate.customizeWidgetCss(css);
+                    Kommunicate.launchConversation();
+                }
             }
-
-        
-}
-
-            }
-            else{
-
-              setInterval(function() {KommunicateGlobal.document.getElementById('launcher-svg-container').click()}, 1000);
-
-              var kommunicateSettings = {
-
-"appId": "27831f13cc1ae9514ea3b1b73a6b64e41",
-"popupWidget": true,
-"automaticChatOpenOnNavigation": true,
-"preLeadCollection" : [
-            {
-                "field": "Name", // Name of the field you want to add
-                "required": true, // Set 'true' to make it a mandatory field
-                "placeholder": "Enter your name" // add whatever text you want to show in the placeholder
-            },
-            {
-                "field": "Email",
-                "type": "email",
-                "required": true,
-                "placeholder": "Enter your email"
-            },
-            {
-                "field": "Phone",
-                "type": "number",
-                "required": true,
-                "element": "input", // Optional field (Possible values: textarea or input)
-                "placeholder": "Enter your phone number"
-            },
-        ],
-"onInit": function() {
-    Kommunicate.startConversation(); //starts a new conversation every time
-
-      var iframeStyle = document.createElement('style');
-      var classSettings = ".change-kommunicate-iframe-height{height:100%!important;width:100%!important;right:0!important;bottom:0!important;max-height: 100%!important;}";
-      iframeStyle.type = 'text/css';
-      iframeStyle.innerHTML = classSettings;
-      document.getElementsByTagName('head')[0].appendChild(iframeStyle);
-      var launcherIconStyle = "@media(min-width: 510px){.mck-sidebox.fade.in,.mck-box .mck-box-sm{width:100%; height:100%;max-height:100%!important;border-radius:0px!important;}.mck-sidebox{right:0!important;bottom:0!important;}}";
-      Kommunicate.customizeWidgetCss(launcherIconStyle);
-      var iframe = window.top.document.getElementsByTagName("iframe")[0];
-      //var addClassToIframe = iframe.contentDocument.getElementById("kommunicate-widget-iframe");
-      iframe.classList.add("change-kommunicate-iframe-height");  
-      KommunicateGlobal.document.getElementById('km-chat-widget-close-button').addEventListener('click',function(){
-          var closeButtonClick = parent.document.getElementById("kommunicate-widget-iframe");
-          closeButtonClick.classList.add("change-kommunicate-iframe-height");
-      });
-
-      var css = "#km-chat-widget-close-button{display:none !important;.mck-sidebox-launcher {display:none !important;} .km-chat-icon-sidebox  {display:none !important; }"             
-    Kommunicate.customizeWidgetCss(css);
-    Kommunicate.launchConversation();
-
-    
-     
-  }
-
-
-}
-             
-            }
-// if(userId!=""){
-// }
-// else{
-       
-//           }
-
-
-
-// kommunicateSettings.onInit = function () {           
             
-// }
+            // if no user then add the pre chat lead form.
+            // please don't enable the pre chat form from dashboard.
+            if (!userId) {
+                console.log('here');
+                let interval = setInterval(
+                    function () { 
+                        if(window.KommunicateGlobal){
+                            KommunicateGlobal.document.getElementById('launcher-svg-container').click();
+                            clearInterval(interval);
+                        }
+                    }, 1000);
 
-
-        
-            /*----------------- Kommunicate settings end ------------------*/
-        
-             var s = document.createElement("script");
-              s.type = "text/javascript";
-              s.async = true;
-              s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
-              var h = document.getElementsByTagName("head")[0];
-              h.appendChild(s);
-              window.kommunicate = m;
-              m._globals = kommunicateSettings;
-            })(document, window.kommunicate || {});
-
-
-
-            function getParameterByName(name, url = window.location.href) {
-    name = name.replace(/[\[\]]/g, '\\$&');
-    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, ' '));
-}
-           
+                kommunicateSettings["preLeadCollection"] = [
+                    {
+                        "field": "Name", // Name of the field you want to add
+                        "required": true, // Set 'true' to make it a mandatory field
+                        "placeholder": "Enter your name" // add whatever text you want to show in the placeholder
+                    },
+                    {
+                        "field": "Email",
+                        "type": "email",
+                        "required": true,
+                        "placeholder": "Enter your email"
+                    },
+                    {
+                        "field": "Phone",
+                        "type": "number",
+                        "required": true,
+                        "element": "input", // Optional field (Possible values: textarea or input)
+                        "placeholder": "Enter your phone number"
+                    },
+                ];
+            } else {
+                kommunicateSettings["userId"] = userId;    
+            }
             
-        </script>
-<div class="container">
-  <div class="loader"></div> 
-</div>
+            var s = document.createElement("script");
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+            var h = document.getElementsByTagName("head")[0];
+            h.appendChild(s);
+            window.kommunicate = m;
+            m._globals = kommunicateSettings;
+        })(document, window.kommunicate || {});
+        /*----------------- Kommunicate settings end ------------------*/
 
-    </body>
+        // added beforeunload event which is resoponsible for logging out the existing user (kommunicate side)
+        // feel free to modify the it as per your requirement.
+        addEventListener('beforeunload', event => {
+            kommunicate.logout()
+        });
+
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+    </script>
+    <div class="container">
+        <div class="loader"></div>
+    </div>
+
+</body>
+
 </html>
