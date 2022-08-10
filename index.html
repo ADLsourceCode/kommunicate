@@ -58,9 +58,15 @@
             var kommunicateSettings = {
                 "appId": "27831f13cc1ae9514ea3b1b73a6b64e41",
                 "popupWidget": true,
+                skipConversationList:false,
+                'isSingleConversation' : false,
                 "automaticChatOpenOnNavigation": true,
                 "onInit": function () {
                     // Kommunicate.startConversation(); //starts a new conversation every time
+
+
+                    var css = ".mck-running-on {display:none !important;}";
+          Kommunicate.customizeWidgetCss(css);
 
                     var iframeStyle = document.createElement('style');
                     var classSettings = ".change-kommunicate-iframe-height{height:100%!important;width:100%!important;right:0!important;bottom:0!important;max-height: 100%!important;}";
@@ -93,7 +99,7 @@
                             KommunicateGlobal.document.getElementById('launcher-svg-container').click();
                             clearInterval(interval);
                         }
-                    }, 1000);
+                    }, 500);
 
                 kommunicateSettings["preLeadCollection"] = [
                     {
